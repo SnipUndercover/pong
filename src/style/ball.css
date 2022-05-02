@@ -1,9 +1,0 @@
-#ball {
-    --size: 5px;
-    background-color: white;
-    width: var(--size);
-    height: var(--size);
-    position: absolute;
-    bottom: calc(50vh - 5px);
-    left: calc(50vw - 5px);
-}

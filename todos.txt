@@ -1,1 +1,0 @@
-Fix resize causing the ball to not bounce off the paddles
