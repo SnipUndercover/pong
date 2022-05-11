@@ -3,26 +3,7 @@
   import { quintOut } from 'svelte/easing'
   import { fade, fly } from 'svelte/transition'
   import Button from './Button.svelte';
-
-  type Button = {
-    title: string;
-    to: string;
-  }
-
-  const buttons: Button[] = [
-    {
-      title: "VS CPU",
-      to: "cpu"
-    },
-    {
-      title: "Two players (offline)",
-      to: "offline"
-    },
-    {
-      title: "Two players (online)",
-      to: "online"
-    }
-  ]
+  import routes from '../../routes'
 </script>
 
 <main transition:fade>
@@ -31,9 +12,9 @@
     <h3>Select a mode below:</h3>
   </header>
   <article>
-    {#each buttons as button, id}
-      <Link to={button.to} style="text-decoration: none">
-        <Button title={button.title} {id}/>
+    {#each routes as {title, to}, id}
+      <Link {to} style="text-decoration: none">
+        <Button {title} {id}/>
       </Link>
     {/each}
   </article>
