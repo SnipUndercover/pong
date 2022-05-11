@@ -1,37 +1,39 @@
 <script lang="ts">
   import { Link } from 'svelte-navigator';
-  import { cubicOut } from 'svelte/easing'
+  import { quintOut } from 'svelte/easing'
   import { fade, fly } from 'svelte/transition'
-  import Button from './lib/Button.svelte';
+  import Button from './Button.svelte';
 
-  const buttons = [
+  type Button = {
+    title: string;
+    to: string;
+  }
+
+  const buttons: Button[] = [
     {
       title: "VS CPU",
-      to: "cpu",
-      id: 1
+      to: "cpu"
     },
     {
       title: "Two players (offline)",
-      to: "offline",
-      id: 2
+      to: "offline"
     },
     {
       title: "Two players (online)",
-      to: "online",
-      id: 3
+      to: "online"
     }
   ]
 </script>
 
-<main out:fade>
-  <header in:fly="{{ y: -25, duration: 2000, easing: cubicOut }}">
+<main transition:fade>
+  <header in:fly="{{ y: -25, duration: 2000, easing: quintOut }}">
     <h1>Welcome to Pong!</h1>
     <h3>Select a mode below:</h3>
   </header>
   <article>
-    {#each buttons as button}
+    {#each buttons as button, id}
       <Link to={button.to} style="text-decoration: none">
-        <Button title={button.title} id={button.id}/>
+        <Button title={button.title} {id}/>
       </Link>
     {/each}
   </article>
@@ -39,9 +41,16 @@
 
 <style lang="sass">
   main
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 1
+
     width: 100vw
     height: 100vh
     
+    background-color: black
+
     display: flex
     align-items: center
     flex-direction: column
@@ -49,8 +58,7 @@
 
     header
       text-align: center
-
-      h1:focus
+      *:focus
         outline: none
 
     article

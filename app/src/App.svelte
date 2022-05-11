@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Router, Route } from 'svelte-navigator';
   import Menu from './routes/menu/Menu.svelte';
+  import Todo from './Todo.svelte';
 </script>
 
 <Router>
@@ -8,13 +9,13 @@
     <Menu/>
   </Route>
   <Route path="/cpu">
-  <!-- TODO -->
+    <Todo text="Implement CPU gameplay"/>
   </Route>
   <Route path="/offline">
-    <!-- TODO -->
+    <Todo text="Implement offline gameplay"/>
   </Route>
   <Route path="/online">
-    <!-- TODO -->
+    <Todo text="Implement online gameplay"/>
   </Route>
 </Router>
 
