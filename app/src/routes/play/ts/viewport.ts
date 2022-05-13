@@ -8,7 +8,7 @@ import { IAngledPosition, IPosition, Position } from "./position";
  */
 export function toViewportX(x: number) {
   x = Position.clampX(x);  // [0, MAX_WIDTH]
-  x /= Position.MAX_WIDTH;     // [0, 1]
+  x /= Position.MAX_WIDTH; // [0, 1]
   x *= window.innerWidth;  // [0, innerWidth]
   return x;
 }
@@ -20,9 +20,9 @@ export function toViewportX(x: number) {
  * @returns Result viewport value
  */
 export function toViewportY(y: number) {
-  y = Position.clampY(y);  // [0, MAX_HEIGHT]
-  y /= Position.MAX_HEIGHT;    // [0, 1]
-  y *= window.innerHeight; // [0, innerHeight]
+  y = Position.clampY(y);   // [0, MAX_HEIGHT]
+  y /= Position.MAX_HEIGHT; // [0, 1]
+  y *= window.innerHeight;  // [0, innerHeight]
   return y;
 }
 

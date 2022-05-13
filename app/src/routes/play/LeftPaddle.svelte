@@ -5,7 +5,6 @@
 
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
-
   import Paddle, { HEIGHT, PADDING, SPEED } from "./Paddle.svelte";
   import { Position } from "./ts/position";
   import { leftPaddlePosition, ballPosition } from "./ts/stores";

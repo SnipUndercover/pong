@@ -5,7 +5,7 @@
 
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
-  import Paddle, { HEIGHT, PADDING, SPEED } from "./Paddle.svelte";
+  import Paddle, { WIDTH, HEIGHT, PADDING, SPEED } from "./Paddle.svelte";
   import { Position } from "./ts/position";
   import { rightPaddlePosition, ballPosition } from "./ts/stores";
 
@@ -15,7 +15,7 @@
   rightPaddlePosition.set(
     new Position({
       y: (Position.MAX_HEIGHT - HEIGHT) / 2,
-      x: Position.MAX_WIDTH - PADDING,
+      x: Position.MAX_WIDTH - PADDING - WIDTH,
     })
   );
 
