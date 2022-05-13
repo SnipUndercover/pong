@@ -10,3 +10,10 @@
   <RightPaddle />
   <Ball />
 </div>
+
+<style lang="scss">
+  div {
+    width: 100vw;
+    height: 100vh;
+  }
+</style>
