@@ -41,8 +41,18 @@
   onMount(() => {
     intervalId = window.setInterval(() => {
       if (up && down) return;
-      if (up) $leftPaddlePosition.y -= SPEED;
-      if (down) $leftPaddlePosition.y += SPEED;
+      if (down) {
+        $leftPaddlePosition.y += SPEED;
+        // positions are counted from the top left corner
+        // because of that only the top left corner is bounded to [0, MAX_HEIGHT]
+        // the bottom is not bounded
+        // the below will ensure the bottom bound will be inside the board
+        $leftPaddlePosition.y += HEIGHT;
+        $leftPaddlePosition.y -= HEIGHT;
+      }
+      if (up)
+        // top is already bounded; we don't need to do that here
+        $leftPaddlePosition.y -= SPEED;
     }, 1);
   });
 
@@ -53,4 +63,4 @@
 
 <svelte:window on:keydown={keydown} on:keyup={keyup} />
 
-<Paddle store={leftPaddlePosition}/>
+<Paddle store={leftPaddlePosition} />

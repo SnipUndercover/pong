@@ -1,15 +1,13 @@
 <script lang="ts" context="module">
-  export type PaddlePosition = "left" | "right";
-  export const HEIGHT = 135;
-  export const WIDTH = 25;
+  export const HEIGHT = 170;
+  export const WIDTH = 15;
   export const PADDING = 100;
-  export const SPEED = 5;
+  export const SPEED = 2.5;
 </script>
 
 <script lang="ts">
   import type { IPosition, Position } from "./ts/position";
   import { toViewport, toViewportX, toViewportY } from "./ts/viewport";
-  import { onMount } from "svelte";
   import type { Writable } from "svelte/store";
 
   export let store: Writable<Position>;
@@ -30,7 +28,10 @@
   updateSize();
 </script>
 
-<svelte:window on:resize={updateSize} />
+<svelte:window
+  on:resize={updateSize}
+  on:resize={() => updatePosition($store)}
+/>
 
 <div
   style:top={`${viewportPos.y}px`}
