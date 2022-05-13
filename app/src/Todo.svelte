@@ -3,7 +3,7 @@
   export let text: string;
 </script>
 
-<div out:fade>
+<div transition:fade>
   <h1>{text ? `TODO: ${text}` : "TODO"}</h1>
 </div>
 

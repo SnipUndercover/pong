@@ -1,9 +1,12 @@
 <script lang="ts">
   import LeftPaddle from "./LeftPaddle.svelte";
   import RightPaddle from "./RightPaddle.svelte";
+  import Ball from "./Ball.svelte";
+  import { fade } from 'svelte/transition'
 </script>
 
-<div>
+<div transition:fade>
   <LeftPaddle />
   <RightPaddle />
+  <Ball />
 </div>
