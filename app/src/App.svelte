@@ -3,9 +3,10 @@
   import Menu from "./routes/menu/Menu.svelte";
   import Todo from "./Todo.svelte";
   import routes from "./routes";
+  import Board from "./routes/play/Board.svelte";
 </script>
 
-<Router>
+<Router primary={false}>
   <Route path="/">
     <Menu />
   </Route>
@@ -13,7 +14,7 @@
     <Todo text="Implement CPU gameplay" />
   </Route>
   <Route path={routes[1].to}>
-    <Todo text="Implement offline gameplay" />
+    <Board />
   </Route>
   <Route path={routes[2].to}>
     <Todo text="Implement online gameplay" />

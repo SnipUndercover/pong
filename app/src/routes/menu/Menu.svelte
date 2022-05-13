@@ -39,9 +39,6 @@
 
     header {
       text-align: center;
-      *:focus {
-        outline: none;
-      }
     }
 
     article {
