@@ -1,15 +1,15 @@
 const routes = [
   {
     title: "VS CPU",
-    to: "cpu"
+    to: "play/cpu"
   },
   {
     title: "Two players (offline)",
-    to: "offline"
+    to: "play/offline"
   },
   {
     title: "Two players (online)",
-    to: "online"
+    to: "play/online"
   }
 ];
 
