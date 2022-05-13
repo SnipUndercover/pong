@@ -30,8 +30,6 @@
     width: 100vw;
     height: 100vh;
 
-    background-color: black;
-
     display: flex;
     align-items: center;
     flex-direction: column;
