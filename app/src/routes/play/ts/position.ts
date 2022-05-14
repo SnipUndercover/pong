@@ -158,4 +158,19 @@ export class AngledPosition
     return { x, y, angle };
   }
 
+  /**
+   * Convert degrees into radians.
+   * @param deg Degrees to convert
+   * @returns Radians
+   */
+  public static toRadians = (deg: number) =>
+    deg / 180 * Math.PI;
+
+  /**
+   * Convert radians into degrees.
+   * @param rad Radians to convert
+   * @returns Degrees
+   */
+  public static toDegrees = (rad: number) =>
+    rad / Math.PI * 180;
 }
