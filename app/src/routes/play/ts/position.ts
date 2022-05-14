@@ -84,7 +84,7 @@ export class Position implements IPosition {
     let { x, y } = pos;
     x = Position.clampX(x);
     y = Position.clampY(y);
-    return { x, y };
+    return { ...pos, x, y };
   }
 }
 
@@ -155,7 +155,7 @@ export class AngledPosition
     x = AngledPosition.clampX(x);
     y = AngledPosition.clampY(y);
     angle = AngledPosition.clampAngle(angle);
-    return { x, y, angle };
+    return { ...pos, x, y, angle };
   }
 
   /**
