@@ -21,7 +21,6 @@
   let up = false;
   let down = false;
 
-
   function keydown(e: KeyboardEvent) {
     if (!up && e.code === UP_KEY) {
       up = true;
@@ -39,22 +38,34 @@
   }
 
   let intervalID: number;
-  
+
   onMount(resetPosition);
   onMount(() => {
     intervalID = window.setInterval(() => {
       if (up && down) return;
       if (down) {
         $leftPaddlePosition.y += SPEED;
-        // positions are counted from the top left corner
-        // because of that only the top left corner is bounded to [0, MAX_HEIGHT]
-        // the bottom is not bounded
-        // the below will ensure the bottom bound will be inside the board
+
+        //* the position only keeps track of the top left corner of the paddle
+        //* the bottom and right sides are kept unbounded
+        //* if the y is less than HEIGHT units away from the bottom of the board,
+        //* the paddle will get cut short; we don't want that
+
+        //* move the paddle to the bottom of itself
+        //* if the translation (or movement, if you prefer) ends up moving the paddle out of bounds,
+        //* the position will snap to the bottom of the board instead
         $leftPaddlePosition.y += HEIGHT;
+
+        //* move the paddle back up to where it was before
+        //* if it was out of bounds, this moves it HEIGHT units away from the bottom of the board
+        //* which subsequently makes sure the bottom of the paddle always will be in bounds
         $leftPaddlePosition.y -= HEIGHT;
+
+        //* no need to keep track of the right side, since we're only moving up and down
       }
       if (up)
-        // top is already bounded; we don't need to do that here
+        //* top is already bounded, so we don't need to do anything special here
+        //* if we end up out of bounds, we'll snap to the top of the board instead
         $leftPaddlePosition.y -= SPEED;
     }, 1);
   });

@@ -45,15 +45,12 @@
       if (up && down) return;
       if (down) {
         $rightPaddlePosition.y += SPEED;
-        // positions are counted from the top left corner
-        // because of that only the top left corner is bounded to [0, MAX_HEIGHT]
-        // the bottom is not bounded
-        // the below will ensure the bottom bound will be inside the board
+
+        //* refer to LeftPaddle.svelte:49 for an explanation of why the below is necessary
         $rightPaddlePosition.y += HEIGHT;
         $rightPaddlePosition.y -= HEIGHT;
       }
       if (up)
-        // top is already bounded; we don't need to do that here
         $rightPaddlePosition.y -= SPEED;
     }, 1);
   });
