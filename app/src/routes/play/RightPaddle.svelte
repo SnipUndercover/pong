@@ -1,23 +1,25 @@
 <script context="module" lang="ts">
   export const UP_KEY = "ArrowUp";
   export const DOWN_KEY = "ArrowDown";
+
+  export function resetPosition() {
+    rightPaddlePosition.set(
+      new Position({
+        y: (Position.MAX_HEIGHT - HEIGHT) / 2,
+        x: Position.MAX_WIDTH - PADDING - WIDTH,
+      })
+    );
+  }
 </script>
 
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
-  import Paddle, { WIDTH, HEIGHT, PADDING, SPEED } from "./Paddle.svelte";
+  import Paddle, { HEIGHT, PADDING, SPEED, WIDTH } from "./Paddle.svelte";
   import { Position } from "./ts/position";
   import { rightPaddlePosition, ballPosition } from "./ts/stores";
 
   let up = false;
   let down = false;
-
-  rightPaddlePosition.set(
-    new Position({
-      y: (Position.MAX_HEIGHT - HEIGHT) / 2,
-      x: Position.MAX_WIDTH - PADDING - WIDTH,
-    })
-  );
 
   function keydown(e: KeyboardEvent) {
     if (!up && e.code === UP_KEY) {
@@ -35,10 +37,11 @@
     }
   }
 
-  let intervalId: number;
+  let intervalID: number;
 
+  onMount(resetPosition);
   onMount(() => {
-    intervalId = window.setInterval(() => {
+    intervalID = window.setInterval(() => {
       if (up && down) return;
       if (down) {
         $rightPaddlePosition.y += SPEED;
@@ -56,7 +59,7 @@
   });
 
   onDestroy(() => {
-    clearInterval(intervalId);
+    clearInterval(intervalID);
   });
 </script>
 

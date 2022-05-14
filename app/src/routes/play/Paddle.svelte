@@ -9,6 +9,7 @@
   import type { IPosition, Position } from "./ts/position";
   import { toViewport, toViewportX, toViewportY } from "./ts/viewport";
   import type { Writable } from "svelte/store";
+  import { onMount } from "svelte";
 
   export let store: Writable<Position>;
   let viewportPos: IPosition;
@@ -23,9 +24,9 @@
   function updatePosition(pos: Position) {
     viewportPos = toViewport(pos);
   }
-
+  
+  onMount(updateSize);
   store.subscribe(updatePosition);
-  updateSize();
 </script>
 
 <svelte:window

@@ -1,6 +1,15 @@
 <script context="module" lang="ts">
   export const UP_KEY = "KeyW";
   export const DOWN_KEY = "KeyS";
+
+  export function resetPosition() {
+    leftPaddlePosition.set(
+      new Position({
+        y: (Position.MAX_HEIGHT - HEIGHT) / 2,
+        x: PADDING,
+      })
+    );
+  }
 </script>
 
 <script lang="ts">
@@ -12,12 +21,6 @@
   let up = false;
   let down = false;
 
-  leftPaddlePosition.set(
-    new Position({
-      y: (Position.MAX_HEIGHT - HEIGHT) / 2,
-      x: PADDING,
-    })
-  );
 
   function keydown(e: KeyboardEvent) {
     if (!up && e.code === UP_KEY) {
@@ -35,10 +38,11 @@
     }
   }
 
-  let intervalId: number;
-
+  let intervalID: number;
+  
+  onMount(resetPosition);
   onMount(() => {
-    intervalId = window.setInterval(() => {
+    intervalID = window.setInterval(() => {
       if (up && down) return;
       if (down) {
         $leftPaddlePosition.y += SPEED;
@@ -56,7 +60,7 @@
   });
 
   onDestroy(() => {
-    clearInterval(intervalId);
+    clearInterval(intervalID);
   });
 </script>
 
