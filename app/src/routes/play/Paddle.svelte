@@ -17,7 +17,11 @@
   import type { IRect } from "./ts/rect";
 
   export let store: Writable<Position>;
-  let viewportRect: IRect<IPosition>;
+  let viewportRect: IRect<IPosition> = {
+    pos: toViewport($store),
+    width: toViewportHorizontal(WIDTH),
+    height: toViewportVertical(HEIGHT)
+  };
 
   function updateSize() {
     viewportRect.width = toViewportHorizontal(WIDTH);
@@ -28,7 +32,12 @@
     viewportRect.pos = toViewport(pos);
   }
 
-  onMount(updateSize);
+  function update(pos: Position) {
+    updateSize();
+    updatePosition(pos);
+  }
+
+  onMount(() => update($store));
   store.subscribe(updatePosition);
 </script>
 
