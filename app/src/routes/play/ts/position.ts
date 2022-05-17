@@ -158,6 +158,14 @@ export class AngledPosition
     return { ...pos, x, y, angle };
   }
 
+  public static getAngleBetween(src: IPosition, dst: IPosition) {
+    const [dy, dx] = [src.y - dst.y, src.x - dst.x];
+    const angle = AngledPosition.clampAngle(
+      Math.atan2(dy, dx) / Math.PI * 180
+    );
+    return angle;
+  }
+
   /**
    * Convert degrees into radians.
    * @param deg Degrees to convert
