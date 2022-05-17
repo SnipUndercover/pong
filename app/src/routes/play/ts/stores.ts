@@ -1,12 +1,11 @@
 import { writable } from "svelte/store";
-import { SIZE } from "../Ball.svelte";
 import { HEIGHT, PADDING, WIDTH } from "../Paddle.svelte";
 import { AngledPosition, Position } from "./position";
 
 export const ballPosition = writable<AngledPosition>(
   new AngledPosition({
-    y: (Position.MAX_HEIGHT - SIZE) / 2,
-    x: (Position.MAX_WIDTH - SIZE) / 2,
+    y: (Position.MAX_HEIGHT) / 2,
+    x: (Position.MAX_WIDTH) / 2,
     angle: Math.random() * 360,
   })
 );
