@@ -10,19 +10,18 @@
   import { toViewport, toViewportX, toViewportY } from "./ts/viewport";
   import type { Writable } from "svelte/store";
   import { onMount } from "svelte";
+import type { IRect } from "./ts/rect";
 
   export let store: Writable<Position>;
-  let viewportPos: IPosition;
-  let viewportWidth: number;
-  let viewportHeight: number;
+  let viewportRect: IRect<IPosition>;
 
   function updateSize() {
-    viewportWidth = toViewportX(WIDTH);
-    viewportHeight = toViewportY(HEIGHT);
+    viewportRect.width = toViewportX(WIDTH);
+    viewportRect.height = toViewportY(HEIGHT);
   }
 
   function updatePosition(pos: Position) {
-    viewportPos = toViewport(pos);
+    viewportRect.pos = toViewport(pos);
   }
   
   onMount(updateSize);
@@ -35,10 +34,10 @@
 />
 
 <div
-  style:top={`${viewportPos.y}px`}
-  style:left={`${viewportPos.x}px`}
-  style:width={`${viewportWidth}px`}
-  style:height={`${viewportHeight}px`}
+  style:top={`${viewportRect.pos.y}px`}
+  style:left={`${viewportRect.pos.x}px`}
+  style:width={`${viewportRect.width}px`}
+  style:height={`${viewportRect.height}px`}
 />
 
 <style lang="scss">
