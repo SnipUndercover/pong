@@ -7,23 +7,27 @@
 
 <script lang="ts">
   import type { IPosition, Position } from "./ts/position";
-  import { toViewport, toViewportX, toViewportY } from "./ts/viewport";
+  import {
+    toViewport,
+    toViewportX as toViewportHorizontal,
+    toViewportY as toViewportVertical,
+  } from "./ts/viewport";
   import type { Writable } from "svelte/store";
   import { onMount } from "svelte";
-import type { IRect } from "./ts/rect";
+  import type { IRect } from "./ts/rect";
 
   export let store: Writable<Position>;
   let viewportRect: IRect<IPosition>;
 
   function updateSize() {
-    viewportRect.width = toViewportX(WIDTH);
-    viewportRect.height = toViewportY(HEIGHT);
+    viewportRect.width = toViewportHorizontal(WIDTH);
+    viewportRect.height = toViewportVertical(HEIGHT);
   }
 
   function updatePosition(pos: Position) {
     viewportRect.pos = toViewport(pos);
   }
-  
+
   onMount(updateSize);
   store.subscribe(updatePosition);
 </script>
