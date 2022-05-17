@@ -13,7 +13,7 @@
 </script>
 
 <script lang="ts">
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   import Paddle, { HEIGHT, PADDING, SPEED, WIDTH } from "./Paddle.svelte";
   import { Position } from "./ts/position";
   import { rightPaddlePosition, ballPosition } from "./ts/stores";
@@ -38,10 +38,9 @@
   }
 
   let intervalID: number;
-
-  onMount(resetPosition);
   onMount(() => {
-    intervalID = window.setInterval(() => {
+    resetPosition();
+    const intervalID = window.setInterval(() => {
       if (up && down) return;
       if (down) {
         $rightPaddlePosition.y += SPEED;
@@ -53,10 +52,10 @@
       if (up)
         $rightPaddlePosition.y -= SPEED;
     }, 1);
-  });
 
-  onDestroy(() => {
-    clearInterval(intervalID);
+    return () => {
+      clearInterval(intervalID);
+    }
   });
 </script>
 

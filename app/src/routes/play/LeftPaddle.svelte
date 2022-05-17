@@ -13,7 +13,7 @@
 </script>
 
 <script lang="ts">
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   import Paddle, { HEIGHT, PADDING, SPEED } from "./Paddle.svelte";
   import { Position } from "./ts/position";
   import { leftPaddlePosition, ballPosition } from "./ts/stores";
@@ -37,11 +37,9 @@
     }
   }
 
-  let intervalID: number;
-
-  onMount(resetPosition);
   onMount(() => {
-    intervalID = window.setInterval(() => {
+    resetPosition();
+    const intervalID = window.setInterval(() => {
       if (up && down) return;
       if (down) {
         $leftPaddlePosition.y += SPEED;
@@ -68,10 +66,10 @@
         //* if we end up out of bounds, we'll snap to the top of the board instead
         $leftPaddlePosition.y -= SPEED;
     }, 1);
-  });
 
-  onDestroy(() => {
-    clearInterval(intervalID);
+    return () => {
+      clearInterval(intervalID);
+    }
   });
 </script>
 

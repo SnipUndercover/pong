@@ -6,45 +6,38 @@
 </script>
 
 <script lang="ts">
-  import type { IPosition, Position } from "./ts/position";
+  import type { Writable } from "svelte/store";
+  import { onMount } from "svelte";
   import {
     toViewport,
     toViewportX as toViewportHorizontal,
     toViewportY as toViewportVertical,
   } from "./ts/viewport";
-  import type { Writable } from "svelte/store";
-  import { onMount } from "svelte";
+  import type { IPosition, Position } from "./ts/position";
   import type { IRect } from "./ts/rect";
 
   export let store: Writable<Position>;
+
   let viewportRect: IRect<IPosition> = {
     pos: toViewport($store),
     width: toViewportHorizontal(WIDTH),
-    height: toViewportVertical(HEIGHT)
+    height: toViewportVertical(HEIGHT),
   };
 
-  function updateSize() {
+  function update() {
+    viewportRect.pos = toViewport($store);
     viewportRect.width = toViewportHorizontal(WIDTH);
     viewportRect.height = toViewportVertical(HEIGHT);
   }
 
-  function updatePosition(pos: Position) {
-    viewportRect.pos = toViewport(pos);
-  }
+  onMount(() => {
+    const unsubscribe = store.subscribe(update);
 
-  function update(pos: Position) {
-    updateSize();
-    updatePosition(pos);
-  }
-
-  onMount(() => update($store));
-  store.subscribe(updatePosition);
+    return () => unsubscribe();
+  });
 </script>
 
-<svelte:window
-  on:resize={updateSize}
-  on:resize={() => updatePosition($store)}
-/>
+<svelte:window on:resize={update} />
 
 <div
   style:top={`${viewportRect.pos.y}px`}
