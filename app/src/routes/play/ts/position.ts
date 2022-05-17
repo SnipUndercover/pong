@@ -158,6 +158,12 @@ export class AngledPosition
     return { ...pos, x, y, angle };
   }
 
+  /**
+   * Calculate the angle between two points, parallel to the X axis.
+   * @param src Source position (angle vertex)
+   * @param dst Destination position (angle ray)
+   * @returns The measured angle in degrees
+   */
   public static getAngleBetween(src: IPosition, dst: IPosition) {
     const [dy, dx] = [src.y - dst.y, src.x - dst.x];
     const angle = AngledPosition.clampAngle(
