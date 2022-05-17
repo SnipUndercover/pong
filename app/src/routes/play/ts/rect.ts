@@ -18,21 +18,15 @@ export function isIntersecting<
   T extends IPosition,
   U extends IPosition
 >(src: IRect<T>, dst: IRect<U>) {
-  //define top, bottom, left and right boundaries
+  // define top, bottom, left and right boundaries
   const [srcT, srcB] = [src.pos.y, src.pos.y + src.height];
   const [srcL, srcR] = [src.pos.x, src.pos.x + src.width];
 
-  //define vertices
-  const vertices: IPosition[] = [
-    { x: srcT, y: srcL, }, // top left
-    { x: srcB, y: srcL, }, // bottom left
-    { x: srcT, y: srcR, }, // top right
-    { x: srcB, y: srcR, }, // bottom right
-  ];
+  const [dstT, dstB] = [dst.pos.y, dst.pos.y + dst.height];
+  const [dstL, dstR] = [dst.pos.x, dst.pos.x + dst.width];
 
-  // check if any source vertex is inside the dest rect
-  // else we're not intersecting
-  return vertices.some(vertex => isInside(vertex, dst));
+  // https://stackoverflow.com/questions/2752349/fast-rectangle-to-rectangle-intersection
+  return !(dstL > srcR || dstR < srcL || dstT > srcB || dstB < srcT);
 }
 
 /**
