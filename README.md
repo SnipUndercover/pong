@@ -1,8 +1,8 @@
 # Pong
-A simple game of *Pong* in Svelte + Typescript.
-Built using Vite.
-Move the left paddle with `W`/`S`.
-Move the right paddle with `↑`/`↓`.
+A simple game of *Pong* in Svelte + Typescript.  
+Built using Vite.  
+Move the left paddle with `W`/`S`.  
+Move the right paddle with `↑`/`↓`.  
 
 ## Run
 ```bash
