@@ -16,7 +16,7 @@
   import { onMount } from "svelte";
   import Paddle, { HEIGHT, PADDING, SPEED, WIDTH } from "./Paddle.svelte";
   import { Position } from "./ts/position";
-  import { rightPaddlePosition, ballPosition } from "./ts/stores";
+  import { rightPaddlePosition } from "./ts/stores";
 
   let up = false;
   let down = false;
