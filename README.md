@@ -6,11 +6,13 @@ Move the right paddle with `↑`/`↓`.
 
 ## Run
 ```bash
+cd app
 npm run dev
 ```
 
 ## Build
 ```bash
+cd app
 npm run preview # Preview app
 npm run build   # Build app
 ```
