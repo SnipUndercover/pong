@@ -21,3 +21,6 @@ export const rightPaddlePosition = writable<Position>(
     x: Position.MAX_WIDTH - PADDING - WIDTH,
   })
 );
+export const playing = writable(true);
+export const leftScore = writable(0);
+export const rightScore = writable(0);
