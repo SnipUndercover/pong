@@ -154,7 +154,7 @@
           Math.sin(AngledPosition.toRadians($ballPosition.angle)) * speed;
         $ballPosition.y += dy;
 
-        //* (refer to LeftPaddle.svelte:49)
+        //* (refer to LeftPaddle.svelte:47)
         //* this time we need to keep track of both the bottom and right sides
         //* so that no parts of the ball will get cut off
 

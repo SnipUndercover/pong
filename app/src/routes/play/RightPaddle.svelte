@@ -44,7 +44,7 @@
       if (down) {
         $rightPaddlePosition.y += SPEED;
 
-        //* refer to LeftPaddle.svelte:49 for an explanation of why the below is necessary
+        //* refer to LeftPaddle.svelte:47 for an explanation of why the below is necessary
         $rightPaddlePosition.y += HEIGHT;
         $rightPaddlePosition.y -= HEIGHT;
       }
