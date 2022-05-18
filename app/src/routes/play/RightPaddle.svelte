@@ -37,7 +37,6 @@
     }
   }
 
-  let intervalID: number;
   onMount(() => {
     resetPosition();
     const intervalID = window.setInterval(() => {
