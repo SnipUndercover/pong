@@ -4,6 +4,12 @@ Built using Vite.
 Move the left paddle with `W`/`S`.  
 Move the right paddle with `↑`/`↓`.  
 
+## Setup
+```bash
+cd app
+npm install
+```
+
 ## Run
 ```bash
 cd app
