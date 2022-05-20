@@ -3,6 +3,7 @@ A simple game of *Pong* in Svelte + Typescript.
 Built using Vite.  
 Move the left paddle with `W`/`S`.  
 Move the right paddle with `↑`/`↓`.  
+Press `Space` to start the ball.
 
 ## Setup
 ```bash
