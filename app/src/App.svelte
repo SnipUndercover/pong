@@ -6,8 +6,8 @@
   import Board from "./routes/play/Board.svelte";
 </script>
 
-<Router primary={false}>
-  <Route path="/">
+<Router primary={false} basepath="/">
+  <Route>
     <Menu />
   </Route>
   <Route path={routes[0].to}>
