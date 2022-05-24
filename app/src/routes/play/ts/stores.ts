@@ -1,5 +1,5 @@
 import { writable } from "svelte/store";
-import { HEIGHT, PADDING, WIDTH } from "../Paddle.svelte";
+import { HEIGHT, MARGIN, WIDTH } from "../Paddle.svelte";
 import { AngledPosition, Position } from "./position";
 
 export const ballPosition = writable<AngledPosition>(
@@ -12,13 +12,13 @@ export const ballPosition = writable<AngledPosition>(
 export const leftPaddlePosition = writable<Position>(
   new Position({
     y: (Position.MAX_HEIGHT - HEIGHT) / 2,
-    x: PADDING,
+    x: MARGIN,
   })
 );
 export const rightPaddlePosition = writable<Position>(
   new Position({
     y: (Position.MAX_HEIGHT - HEIGHT) / 2,
-    x: Position.MAX_WIDTH - PADDING - WIDTH,
+    x: Position.MAX_WIDTH - MARGIN - WIDTH,
   })
 );
 export const playing = writable(true);

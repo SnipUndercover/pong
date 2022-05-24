@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
   export const HEIGHT = 170;
   export const WIDTH = 16;
-  export const PADDING = 100;
+  export const MARGIN = 100;
   export const SPEED = 2.5;
 </script>
 

@@ -6,7 +6,7 @@
     leftPaddlePosition.set(
       new Position({
         y: (Position.MAX_HEIGHT - HEIGHT) / 2,
-        x: PADDING,
+        x: MARGIN,
       })
     );
   }
@@ -14,7 +14,7 @@
 
 <script lang="ts">
   import { onMount } from "svelte";
-  import Paddle, { HEIGHT, PADDING, SPEED } from "./Paddle.svelte";
+  import Paddle, { HEIGHT, MARGIN, SPEED } from "./Paddle.svelte";
   import { Position } from "./ts/position";
   import { leftPaddlePosition } from "./ts/stores";
 
