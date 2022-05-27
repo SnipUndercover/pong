@@ -3,7 +3,7 @@
   import Menu from "./routes/menu/Menu.svelte";
   import Todo from "./Todo.svelte";
   import routes from "./routes";
-  import Board from "./routes/play/Board.svelte";
+  import Board, { HandlerType } from "./routes/play/Board.svelte";
 </script>
 
 <Router primary={false} basepath="/">
@@ -11,7 +11,7 @@
     <Menu />
   </Route>
   <Route path={routes[0].to}>
-    <Todo text="Implement CPU gameplay" />
+    <Board handler={HandlerType.CPU} />
   </Route>
   <Route path={routes[1].to}>
     <Board />
