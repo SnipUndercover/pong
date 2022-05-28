@@ -14,6 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     h1:focus {
       outline: none;
     }
