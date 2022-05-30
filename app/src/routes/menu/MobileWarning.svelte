@@ -10,7 +10,7 @@
     mobile devices<br />
     yet.
   </h1>
-  <h3>but it may in the future...</h3>
+  <h3 in:fade={{delay: 1000}}>but it may in the future...</h3>
 </div>
 
 <style lang="scss">
